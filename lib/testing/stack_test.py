@@ -3,14 +3,24 @@ from Stack import Stack
 class TestStack:
     '''Class Stack in Stack.py'''
 
-    def test_init(self):
+def test_init(self):
         '''Initialize Stack with list'''
-        stk = Stack([1,2,3,4,5])
-        expected = [1,2,3,4,5]
-        for index in range(len(expected)):
-            assert(expected[index] == stk.items[index])
+        stk = Stack()
+        stk.push(1)
+        stk.push(2)
+        stk.push(3)
+        stk.push(4)
+        stk.push(5)
+        
+        assert stk.size() == 5
+        assert stk.pop() == 5
+        assert stk.pop() == 4
+        assert stk.pop() == 3
+        assert stk.pop() == 2
+        assert stk.pop() == 1
+        assert stk.is_empty()
 
-    def test_push(self):
+def test_push(self):
         '''Push 0 to stack'''
         stk = Stack([1,2,3,4,5])
         stk.push(0)
@@ -18,7 +28,7 @@ class TestStack:
         for index in range(0,len(expected)):
             assert(expected[index] == stk.items[index])
 
-    def test_pop(self):
+def test_pop(self):
         '''Pop 1 off the stack'''
         stk = Stack([1,2,3,4,5])
         stk.pop()
@@ -26,13 +36,13 @@ class TestStack:
         for index in range(len(expected)):
             assert(expected[index] == stk.items[index])
 
-    def test_size(self):
+def test_size(self):
         '''Test Stack size() method'''
         stk = Stack([1,2,3,4,5])
         expected = [1,2,3,4,5]
         assert(stk.size() == len(expected))
 
-    def test_empty(self):
+def test_empty(self):
         '''Test Stack empty() method'''
         stk = Stack()
         assert(stk.isEmpty())
@@ -44,7 +54,7 @@ class TestStack:
         assert(stk.pop() == 1)
 
 
-    def test_full(self):
+def test_full(self):
         '''Test Stack full() method'''
         stk = Stack([1], 1)
 
@@ -57,7 +67,7 @@ class TestStack:
         assert(stk.size() == 1)
         assert(stk.pop() == 1)
 
-    def test_search(self):
+def test_search(self):
         '''Test Stack search() method. How far is the element in the stack? '''
         stk = Stack([5,6,7,8,9,10])
 
@@ -68,5 +78,5 @@ class TestStack:
         assert(stk.search(9) == 1)
         assert(stk.search(10) == 0)
 
-        # Case with target not in Stack
+        
         assert(stk.search(15) == -1)
